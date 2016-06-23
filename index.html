@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang = "en-us">
+<head>
+    <title>Gamooga</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+
+    <!--load bootstrap and fontawesome via CDN-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <style>
+        html, body, input, select, textarea
+        {
+            font-size: 1.05em;
+        }
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#remove").click(function(e) {
+        $(this).closest("#form").remove();
+        e.preventDefault();
+    });
+    $("#add").click(function(e){
+        $(this).closest("#form").clone(true).insertAfter($(this).closest("#form"));
+        e.preventDefault();
+    });
+
+    $("#removesub").click(function(e) {
+        $(this).closest("#subForm").remove();
+        e.preventDefault();
+    });
+    $("#addsub").click(function(e){
+        $(this).closest("#subForm").clone(true).insertAfter($(this).closest("#subForm"));
+        e.preventDefault();
+    });
+
+});
+
+function Customer() 
+{
+     this.CustomerName = "Gamooga";
+}
+var Cust = new Customer();
+
+function getValue() 
+{
+    Cust.CustomerName = $("#name").val();
+}
+function postValue() 
+{
+    $("#name").val(Cust.CustomerName);
+}
+</script>
+    </head>
+    <body>
+
+        <header>
+            <nav class="navbar navbar-default">
+            <div class="container">
+                <div class = "navbar-header">
+                    <a class="navbar-brand" href="/">Gamooga</a>
+                </div>
+
+                <ul class ="nav navbar-nav navbar-right">
+                    <li><a href="#"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </header>
+        
+        <div class="container" id="container">
+            <div class="panel panel-default" id="form">
+                <div class="panel-heading"> 
+                <div class="btn-group pull-right">
+                <a class="btn" id="add" href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                <a class="btn"  id="remove" href="#"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                </div>
+                    <h3 class="panel-title">Gamooga</h3>
+                </div>
+            <div class="panel-body" id="subForm">
+                <input type="text" id="name" onchange="getValue()"/><input style="margin-left:5px" type="submit" name="submit" value="submit"/><div class="btn-group">
+                <a class="btn" id="addsub" href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                <a class="btn"  id="removesub" href="#"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div> 
+
+        </div>
+    </body>
+</html> 
